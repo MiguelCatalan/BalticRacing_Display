@@ -9,7 +9,7 @@
 #define Display
 
 unsigned char displayDigit(unsigned char digit, unsigned char common)
-
+unsigned char displayError(unsigned char digit, unsigned char common)
 /*
 * Encode a Decimal Digit 0-9 to its Seven Segment Equivalent.
 *
