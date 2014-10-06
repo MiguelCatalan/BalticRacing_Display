@@ -9,11 +9,22 @@
 #ifndef Memory
 #define Memory
 
-void read(){
+#include <avr/eeprom.h>
+
+
+unsigned char readStoredTime(){
+	return NULL;
+}
+
+void writeCurrentTime(unsigned char time){
 	
 }
 
-void write(){
+unsigned char readStoredErrors(){
+	return NULL;
+}
+
+void writeCurrentErrors(unsigned char error){
 	
 }
 #endif
