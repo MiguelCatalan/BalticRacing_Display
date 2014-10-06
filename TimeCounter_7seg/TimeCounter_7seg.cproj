@@ -98,6 +98,12 @@
     <Compile Include="Display.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Memory.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Time.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="TimeCounter_7seg.c">
       <SubType>compile</SubType>
     </Compile>
