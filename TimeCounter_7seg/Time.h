@@ -11,10 +11,16 @@
 
 #include <avr/interrupt.h>
 
+/*
+ *	Function Declarations
+ */
 ISR(TIMER1_COMPA_vect);
+void resetTimer();
 
 /*
  *	Timer Counter 1 Compare Match A Interrupt Service Routine/Interrupt Handler
+ *
+ *	TIMER1_COMPA_vect - 
  */
 ISR(TIMER1_COMPA_vect)
 {
@@ -33,4 +39,16 @@ ISR(TIMER1_COMPA_vect)
 	if(hours > 23)
 	hours = 0;
 }
+
+/*
+ * Reset the current time counter, also clean the stored memory count.
+ */
+void resetTimer(){	
+	hours = 0;
+	minutes = 0;
+	seconds = 0;
+	
+	writeCurrentTime();
+}
+
 #endif
