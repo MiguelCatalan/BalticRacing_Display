@@ -8,6 +8,30 @@
 #ifndef Display
 #define Display
 
+#define NONE	0b00000000
+#define ONE		0b00000110
+#define TWO		0b01011011
+#define THREE	0b01001111
+#define FOUR	0b01100110
+#define FIVE	0b01101101
+#define SIX		0b01111101
+#define SEVEN	0b00000111
+#define EIGHT	0b01111111
+#define NINE	0b01101111
+#define ZERO	0b00111111
+
+#define _NONE	~0b00000000
+#define _ONE	~0b00000110
+#define _TWO	~0b01011011
+#define _THREE	~0b01001111
+#define _FOUR	~0b01100110
+#define _FIVE	~0b01101101
+#define _SIX	~0b01111101
+#define _SEVEN	~0b00000111
+#define _EIGHT	~0b01111111
+#define _NINE	~0b01101111
+#define _ZERO	~0b00111111
+
 unsigned char displayDigit(unsigned char digit, unsigned char common)
 unsigned char displayError(unsigned char digit, unsigned char common)
 /*
@@ -23,79 +47,79 @@ unsigned char displayDigit(unsigned char digit, unsigned char common){
 	switch(digit){
 		case 0:	
 			if(common == 1)
-				value = 0b00111111;
+				value = ZERO;
 			else
-				value = ~0b00111111;
+				value = _ZERO;
 			break;
 			
 		case 1:	
 			if(common == 1)
-				value = 0b00000110;
+				value = ONE;
 			else
-				value = ~0b00000110;
+				value = _ONE;
 			break;
 			
 		case 2:	
 			if(common == 1)
-				value = 0b01011011;
+				value = TWO;
 			else
-				value = ~0b01011011;
+				value = _TWO;
 			break;
 			
 		case 3:	
 			if(common == 1)
-				value = 0b01001111;
+				value = THREE;
 			else
-				value = ~0b01001111;
+				value = _THREE;
 			break;
 			
 		case 4:
 			if(common == 1)
-				value = 0b01100110;
+				value = FOUR;
 			else
-				value = ~0b01100110;
+				value = _FOUR;
 			break;
 			
 		case 5:	
 			if(common == 1)
-				value = 0b01101101;
+				value = FIVE;
 			else
-				value = ~0b01101101;
+				value = _FIVE;
 			break;
 			
 		case 6:	
 			if(common == 1)
-				value = 0b01111101;
+				value = SIX;
 			else
-				value = ~0b01111101;
+				value = _SIX;
 			break;
 			
 		case 7:	
 			if(common == 1)
-				value = 0b00000111;
+				value = SEVEN;
 			else
-				value = ~0b00000111;
+				value = _SEVEN;
 			break;
 			
 		case 8:	
 			if(common == 1)
-				value = 0b01111111;
+				value = EIGHT;
 			else
-				value = ~0b01111111;
+				value = _EIGHT;
 			break;
 			
 		case 9:	
 			if(common == 1)
-				value = 0b01101111;
+				value = NINE;
 			else
-				value = ~0b01101111;
+				value = NINE;
 			break;
 			
 		default:
 			if(common == 1)
-				value = 0b00000000;
+				value = NONE;
 			else
-				value = ~0b00000000;
+				value = _NONE;
 			break;
 		
 	}
