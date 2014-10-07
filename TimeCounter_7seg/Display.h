@@ -32,8 +32,13 @@
 #define _NINE	~0b01101111
 #define _ZERO	~0b00111111
 
-unsigned char displayDigit(unsigned char digit, unsigned char common)
-unsigned char displayError(unsigned char digit, unsigned char common)
+/*
+ *	Function Declarations
+ */
+unsigned char displayDigit(unsigned char digit, unsigned char common);
+unsigned char displayError(unsigned char digit, unsigned char common);
+void displayCurrentTime();
+
 /*
 * Encode a Decimal Digit 0-9 to its Seven Segment Equivalent.
 *
@@ -148,5 +153,9 @@ unsigned char displayError(unsigned char digit, unsigned char common){
 			break;
 	}
 	
+}
+
+void displayCurrentTime(){
+	//TODO: implement this
 }
 #endif
