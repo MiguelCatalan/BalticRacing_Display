@@ -16,7 +16,7 @@ unsigned char readStoredTime(){
 	return NULL;
 }
 
-void writeCurrentTime(unsigned char time){
+void writeCurrentTime(){
 	
 }
 
