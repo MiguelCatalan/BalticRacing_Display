@@ -13,12 +13,13 @@
 #include "Memory.h"
 #include "Time.h"
 
-#define SegmentDataPort			PORTB	//TODO: just for testing, find the right port
-#define SegmentDataPin			PINB
-#define SegmentDataDDR			DDRB
-#define SegmentControlPort		PORTC
-#define SegmentControlPin		PINC
-#define SegmentControlDDR		DDRC
+#define SegmentDataPort			PORTA
+#define SegmentDataPin			PINA
+#define SegmentDataDDR			DDRA
+
+#define SegmentControlPort		PORTB
+#define SegmentControlPin		PINB
+#define SegmentControlDDR		DDRB
 
 /*
  *	Function Declarations
