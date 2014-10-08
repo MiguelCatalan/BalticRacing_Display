@@ -1,13 +1,14 @@
 /*
- * TimeCounter_7seg.c
- *
- *	Created: 06/10/2014 22:47:49
- *  Author: Miguel Catalan Bañuls
- *  Team: Baltic Racing
- */ 
+* TimeCounter_7seg.c
+*
+*	Created: 06/10/2014 22:47:49
+*  Author: Miguel Catalan Bañuls
+*  Team: Baltic Racing
+*/
 
 #define F_CPU	4000000UL	//TODO: Check this
 #include <avr/io.h>
+#include <avr/delay.h>
 
 #include "Display.h"
 #include "Memory.h"
@@ -22,37 +23,41 @@
 #define SegmentControlDDR		DDRB
 
 /*
- *	Function Declarations
- */
+*	Function Declarations
+*/
 void checkResetButton();
 char isIgnitionOn();
 
-/*
- *	Global Variables Declarations
- */
-unsigned char hours = 0;
-unsigned char minutes = 0;
-unsigned char seconds = 0;
-
 int main(void){
+	
+	SegmentDataDDR = 0xFF;
+	SegmentControlDDR = 0x3F;
+	SegmentControlPort = 0xFF;
+	
+	/* TODO: clean this
+	TCCR1B = (1<<CS12|1<<WGM12);
+	OCR1A = 15625-1;
+	TIMSK = 1<<OCIE1A;
+	sei();*/
+	
 	readStoredTime();
 	readStoredErrors();
 	
-    while(1){
+	while(1){
 		checkResetButton();
 		checkErrors();
 		
-		if(isIgnitionOn()){
+		if(isIgnitionOn()== 1){
 			
 		}
 		
-		displayCurrentTime();
-    }
+		showCurrentTime();
+	}
 }
 
 char isIgnitionOn(){
-		//TODO: check if engine is running
-	return NULL;
+	//TODO: check if engine is running
+	return 1;
 }
 
 void checkResetButton(){

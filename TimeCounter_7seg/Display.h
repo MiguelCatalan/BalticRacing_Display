@@ -8,6 +8,14 @@
 #ifndef Display
 #define Display
 
+#define SegmentDataPort			PORTA
+#define SegmentDataPin			PINA
+#define SegmentDataDDR			DDRA
+
+#define SegmentControlPort		PORTB
+#define SegmentControlPin		PINB
+#define SegmentControlDDR		DDRB
+
 #define NONE	0b00000000
 #define ONE		0b00000110
 #define TWO		0b01011011
@@ -35,9 +43,9 @@
 /*
  *	Function Declarations
  */
-unsigned char displayDigit(unsigned char digit, unsigned char common);
-unsigned char displayError(unsigned char digit, unsigned char common);
-void displayCurrentTime();
+unsigned char getDisplayDigit(unsigned char digit, unsigned char common);
+unsigned char getDisplayError(unsigned char digit, unsigned char common);
+void displayCurrentTime(unsigned char hours, unsigned char minutes, unsigned char seconds);
 
 /*
 * Encode a Decimal Digit 0-9 to its Seven Segment Equivalent.
@@ -46,7 +54,8 @@ void displayCurrentTime();
 * common - Common Anode (0), Common Cathode(1)
 * value - Encoded Seven Segment Value
 */
-unsigned char displayDigit(unsigned char digit, unsigned char common){
+unsigned char getDisplayDigit(unsigned char digit, unsigned char common){
+	
 	unsigned char value;
 	
 	switch(digit){
@@ -138,7 +147,8 @@ unsigned char displayDigit(unsigned char digit, unsigned char common){
 * common - Common Anode (0), Common Cathode(1)
 * value - Encoded Seven Segment Value
 */
-unsigned char displayError(unsigned char digit, unsigned char common){
+unsigned char getDisplayError(unsigned char digit, unsigned char common){
+	
 	unsigned char value;
 	
 	switch(digit){
@@ -152,10 +162,35 @@ unsigned char displayError(unsigned char digit, unsigned char common){
 		default:
 			break;
 	}
-	
+	return value;
 }
 
-void displayCurrentTime(){
-	//TODO: implement this
+/*
+* Prints the current time on the Display
+*
+* hours - Current hours
+* minutes - Current minutes
+* seconds - Current seconds
+*/
+void displayCurrentTime(unsigned char hours, unsigned char minutes, unsigned char seconds){
+	
+	SegmentDataPort = getDisplayDigit(seconds%10,1);
+	SegmentControlPort = ~0x01;
+	
+	SegmentDataPort = getDisplayDigit(seconds/10,1);
+	SegmentControlPort = ~0x02;
+	
+	SegmentDataPort = getDisplayDigit(minutes%10,1);
+	SegmentControlPort = ~0x04;
+	
+	SegmentDataPort = getDisplayDigit(minutes/10,1);
+	SegmentControlPort = ~0x08;
+	
+	SegmentDataPort = getDisplayDigit(hours%10,1);
+	SegmentControlPort = ~0x10;
+	
+	SegmentDataPort = getDisplayDigit(hours/10,1);
+	SegmentControlPort = ~0x20;
 }
+
 #endif
