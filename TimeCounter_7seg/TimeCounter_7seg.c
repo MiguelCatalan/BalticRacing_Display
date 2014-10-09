@@ -1,9 +1,9 @@
 /*
-* TimeCounter_7seg.c
+*	TimeCounter_7seg.c
 *
 *	Created: 06/10/2014 22:47:49
-*  Author: Miguel Catalan Bañuls
-*  Team: Baltic Racing
+*	Author: Miguel Catalan Bañuls
+*	Team: Baltic Racing
 */
 
 #define F_CPU	4000000UL	//TODO: Check this
@@ -40,15 +40,17 @@ int main(void){
 	TIMSK = 1<<OCIE1A;
 	sei();*/
 	
-	readStoredTime();
-	readStoredErrors();
+	setCurrentTime(readStoredHours(), readStoredMinutes(), readStoredSeconds());
+	//readStoredErrors();
 	
 	while(1){
 		checkResetButton();
 		checkErrors();
 		
-		if(isIgnitionOn()== 1){
-			
+		if(isIgnitionOn() == 1){
+			setCounterState((char)1);
+		}else{
+			saveCurrentTime(); //Only saves if the stored time it's different from the current
 		}
 		
 		showCurrentTime();
