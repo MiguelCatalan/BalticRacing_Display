@@ -1,10 +1,11 @@
 /*
- *	Manage the Display stuff methods
- *
- *	Created: 06/10/2014 22:47:49
- *  Author: Miguel Catalan Bañuls
- *  Team: Baltic Racing
- */ 
+*	Manage the Display stuff methods
+*
+*	Created: 06/10/2014 22:47:49
+*	Author: Miguel Catalan Bañuls
+*	Team: Baltic Racing
+*/ 
+
 #ifndef Display
 #define Display
 
@@ -191,6 +192,8 @@ void displayCurrentTime(unsigned char hours, unsigned char minutes, unsigned cha
 	
 	SegmentDataPort = getDisplayDigit(hours/10,1);
 	SegmentControlPort = ~0x20;
+	
+	//TODO: edit for the correct ports depending the number of displays
 }
 
 #endif
