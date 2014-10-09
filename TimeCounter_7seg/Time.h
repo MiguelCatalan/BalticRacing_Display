@@ -23,7 +23,7 @@ char boolean = 0;
 /*
 *	Function Declarations
 */
-ISR(TIMER1_COMPA_vect);
+ISR(TIMER1_CMPA_vect);
 void showCurrentTime();
 void resetTimer();
 void saveCurrentTime();
@@ -32,9 +32,9 @@ void setCounterState(char _boolean);
 /*
 *	Timer Counter 1 Compare Match A Interrupt Service Routine/Interrupt Handler
 *
-*	TIMER1_COMPA_vect -
+*	TIMER1_CMPA_vect -
 */
-ISR(TIMER1_COMPA_vect)
+ISR(TIMER1_CMPA_vect)
 {
 	if(boolean == 1){
 		if(hours < MAX_RUNNING_TIME){
